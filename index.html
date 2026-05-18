@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organic Movement Foundation｜Soé Pilates Studio Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white:  #ffffff;
+    --off:    #f7f5f2;
+    --beige:  #ede8e1;
+    --border: #e0dbd4;
+    --taupe:  #b8a898;
+    --accent: #8c7b6b;
+    --btn:    #c4b5a5;
+    --dark:   #2b2520;
+    --muted:  #9a9189;
+    --text:   #2e2a26;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--text);
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .container { max-width: 640px; margin: 0 auto; padding: 0 28px; }
+
+  .divider-line { width:1px; height:52px; background:var(--border); margin:0 auto; }
+
+  .sec-heading { text-align:center; margin-bottom:40px; }
+  .sec-heading-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300; font-size: 1.75rem; letter-spacing: 0.15em;
+    color: var(--text); display: block;
+  }
+  .sec-heading-ja { display:block; font-size:0.68rem; letter-spacing:0.25em; color:var(--muted); margin-top:5px; }
+  .sec-rule { width:28px; height:1px; background:var(--taupe); margin:10px auto 0; }
+
+  .btn-round {
+    display:block; background:var(--btn); color:#fff;
+    font-family:'Noto Serif JP',serif; font-weight:300;
+    font-size:0.75rem; letter-spacing:0.28em;
+    text-align:center; text-decoration:none;
+    padding:16px 24px; border-radius:50px; border:none; cursor:pointer;
+    transition:background 0.25s;
+  }
+  .btn-round:hover { background:var(--accent); }
+
+  .btn-outline-light {
+    display:block; background:transparent; color:rgba(255,255,255,0.55);
+    font-family:'Noto Serif JP',serif; font-size:0.72rem; letter-spacing:0.22em;
+    text-align:center; text-decoration:none;
+    padding:14px 24px; border-radius:50px; border:1px solid rgba(255,255,255,0.22);
+    transition:border-color 0.25s, color 0.25s;
+  }
+  .btn-outline-light:hover { color:#fff; border-color:rgba(255,255,255,0.5); }
+
+  .fade-up { opacity:0; transform:translateY(22px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity:1; transform:translateY(0); }
+
+  /* PAGE HEADER */
+  .page-header { text-align:center; padding:52px 24px 44px; border-bottom:1px solid var(--border); }
+  .page-header-title {
+    font-family:'Cormorant Garamond',serif; font-weight:300;
+    font-size:2rem; letter-spacing:0.4em; color:var(--text);
+  }
+
+  /* HERO */
+  .hero { position:relative; width:100%; aspect-ratio:3/2; background:var(--beige); overflow:hidden; }
+  .hero-photo {
+    position:absolute; inset:0;
+    background:linear-gradient(150deg,#ddd7cf 0%,#c5bcb2 100%);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--muted); font-size:0.72rem; letter-spacing:0.2em;
+  }
+  .hero-overlay {
+    position:absolute; inset:0;
+    background:linear-gradient(to top, rgba(43,37,32,0.72) 0%, rgba(43,37,32,0.18) 55%, transparent 100%);
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding:32px 28px 36px;
+  }
+  .hero-kicker { font-size:0.62rem; letter-spacing:0.3em; color:rgba(255,255,255,0.6); margin-bottom:7px; }
+  .hero-course { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:1.35rem; letter-spacing:0.18em; color:#fff; margin-bottom:3px; }
+  .hero-sub { font-size:0.7rem; letter-spacing:0.26em; color:rgba(255,255,255,0.7); margin-bottom:20px; }
+  .hero-copy {
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size:1.05rem; color:var(--taupe);
+    margin-bottom:24px; line-height:1.75; letter-spacing:0.05em;
+  }
+  .hero .btn-round { max-width:280px; }
+
+  /* STATS BAR */
+  .stats-bar { background:var(--dark); display:grid; grid-template-columns:repeat(4,1fr); }
+  .stat { padding:22px 8px; text-align:center; border-right:1px solid rgba(255,255,255,0.07); }
+  .stat:last-child { border-right:none; }
+  .stat-num { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:1.9rem; color:var(--taupe); line-height:1; margin-bottom:4px; }
+  .stat-label { font-size:0.55rem; letter-spacing:0.12em; color:rgba(255,255,255,0.4); line-height:1.6; }
+
+  /* CONCEPT */
+  .concept-section { padding:72px 0; background:var(--white); }
+  .concept-lead { font-size:0.88rem; line-height:2.2; color:var(--text); text-align:justify; margin-bottom:24px; }
+  .concept-quote {
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size:1.15rem; line-height:1.8; color:var(--accent);
+    text-align:center; padding:28px 0;
+    border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+    margin-bottom:24px; letter-spacing:0.04em;
+  }
+  .concept-box {
+    background:var(--off); border-left:2px solid var(--taupe);
+    padding:22px 22px 22px 26px; margin-bottom:24px;
+  }
+  .concept-box-title { font-size:0.64rem; letter-spacing:0.25em; color:var(--accent); margin-bottom:12px; text-transform:uppercase; }
+  .concept-box ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .concept-box li { font-size:0.8rem; letter-spacing:0.09em; color:var(--text); line-height:1.7; padding-left:16px; position:relative; }
+  .concept-box li::before { content:'・'; position:absolute; left:0; color:var(--taupe); }
+  .concept-sub { font-size:0.8rem; line-height:2.1; color:var(--muted); text-align:justify; }
+
+  /* FOR WHOM */
+  .whom-section { padding:72px 0; background:var(--off); }
+  .whom-lead {
+    font-family:'Cormorant Garamond',serif; font-weight:300;
+    font-size:1.2rem; letter-spacing:0.06em; line-height:2;
+    color:var(--text); text-align:center; margin-bottom:28px;
+  }
+  .whom-lead em { font-style:italic; color:var(--taupe); }
+  .whom-tags { display:flex; flex-direction:column; gap:1px; margin-bottom:32px; }
+  .whom-tag {
+    background:var(--white); padding:16px 20px;
+    font-size:0.79rem; letter-spacing:0.08em; color:var(--text);
+    line-height:1.8; border-left:2px solid var(--border);
+    transition:border-color 0.2s;
+  }
+  .whom-tag:hover { border-left-color:var(--taupe); }
+  .whom-tag::before { content:'◉　'; color:var(--taupe); font-size:0.65rem; }
+  .whom-resolution {
+    font-size:0.82rem; line-height:2.1; color:var(--muted);
+    text-align:center; border-top:1px solid var(--border); padding-top:28px;
+  }
+  .whom-resolution strong { font-weight:400; color:var(--text); }
+
+  /* BENEFITS */
+  .benefits-section { background:var(--white); padding:72px 0; }
+  .benefit-list { display:flex; flex-direction:column; gap:2px; }
+  .benefit-item { background:var(--off); padding:26px 22px; display:grid; grid-template-columns:44px 1fr; gap:16px; align-items:start; }
+  .benefit-num { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:2rem; color:var(--beige); line-height:1; padding-top:2px; }
+  .benefit-title { font-size:0.82rem; font-weight:400; letter-spacing:0.09em; color:var(--text); margin-bottom:7px; line-height:1.6; }
+  .benefit-desc { font-size:0.73rem; line-height:1.95; color:var(--muted); }
+
+  /* CURRICULUM */
+  .curriculum-section { background:var(--off); padding:72px 0; }
+  .curriculum-track { position:relative; display:flex; flex-direction:column; }
+  .curriculum-track::before { content:''; position:absolute; left:19px; top:14px; bottom:14px; width:1px; background:var(--border); }
+  .c-item { display:grid; grid-template-columns:40px 1fr; gap:18px; padding:20px 0; border-bottom:1px solid var(--border); position:relative; }
+  .c-item:first-child { padding-top:0; }
+  .c-item:last-child { border-bottom:none; }
+  .c-dot-col { display:flex; flex-direction:column; align-items:center; padding-top:6px; }
+  .c-dot { width:9px; height:9px; border-radius:50%; border:1.5px solid var(--taupe); background:var(--off); position:relative; z-index:1; flex-shrink:0; }
+  .c-item.final .c-dot { background:var(--taupe); }
+  .c-tag { display:inline-block; font-size:0.58rem; letter-spacing:0.2em; color:var(--accent); background:var(--beige); padding:2px 9px; margin-bottom:7px; text-transform:uppercase; }
+  .c-title { font-size:0.82rem; font-weight:400; letter-spacing:0.08em; color:var(--text); line-height:1.55; margin-bottom:5px; }
+  .c-desc { font-size:0.72rem; line-height:1.95; color:var(--muted); }
+  .curriculum-note { margin-top:28px; font-size:0.7rem; line-height:1.95; color:var(--muted); text-align:center; padding-top:20px; border-top:1px solid var(--border); }
+
+  /* PDF CTA */
+  .pdf-wrap { background:var(--beige); }
+  .pdf-section { max-width:640px; margin:0 auto; padding:56px 28px; text-align:center; }
+  .pdf-eyebrow { font-size:0.62rem; letter-spacing:0.3em; color:var(--accent); text-transform:uppercase; margin-bottom:14px; }
+  .pdf-title { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:1.4rem; letter-spacing:0.1em; color:var(--text); margin-bottom:10px; line-height:1.65; }
+  .pdf-body { font-size:0.76rem; line-height:2; color:var(--muted); margin-bottom:28px; }
+  .btn-pdf {
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--dark); color:rgba(255,255,255,0.88);
+    font-family:'Noto Serif JP',serif; font-weight:300;
+    font-size:0.74rem; letter-spacing:0.18em; text-decoration:none;
+    padding:15px 32px; border-radius:50px; transition:background 0.25s;
+  }
+  .btn-pdf:hover { background:var(--accent); }
+  .btn-pdf svg { width:15px; height:15px; opacity:0.65; }
+
+  /* SCHEDULE */
+  .schedule-section { background:var(--white); padding:72px 0; }
+  .venue-tabs { display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid var(--border); }
+  .v-tab {
+    padding:14px 8px; text-align:center;
+    font-family:'Cormorant Garamond',serif; font-size:1.15rem; letter-spacing:0.15em;
+    color:var(--muted); cursor:pointer; border-bottom:2px solid transparent;
+    margin-bottom:-1px; transition:color 0.2s, border-color 0.2s; user-select:none;
+  }
+  .v-tab.active { color:var(--text); border-bottom-color:var(--taupe); }
+  .v-panel { display:none; }
+  .v-panel.active { display:block; }
+  .v-card { background:var(--off); padding:28px 24px 32px; }
+  .v-meta { font-size:0.7rem; letter-spacing:0.1em; color:var(--muted); line-height:2; margin-bottom:22px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+  .sch-label { font-size:0.6rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; }
+  .sch-row { display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid var(--border); }
+  .sch-row:last-of-type { border-bottom:none; }
+  .sch-mod { font-size:0.72rem; letter-spacing:0.07em; color:var(--text); }
+  .sch-date { font-family:'Cormorant Garamond',serif; font-size:0.9rem; color:var(--muted); }
+  .price-wrap { margin-top:24px; padding-top:20px; border-top:1px solid var(--border); }
+  .price-row { display:flex; justify-content:space-between; align-items:baseline; padding:11px 0; border-bottom:1px solid var(--border); }
+  .price-row:last-of-type { border-bottom:none; }
+  .p-lbl { font-size:0.7rem; color:var(--muted); letter-spacing:0.06em; line-height:1.6; max-width:18ch; }
+  .p-val { font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--text); white-space:nowrap; }
+  .p-val.sale { color:var(--accent); }
+  .p-strike { font-size:0.78rem; color:var(--muted); text-decoration:line-through; margin-right:4px; }
+  .price-note { font-size:0.67rem; line-height:1.85; color:var(--muted); margin-top:14px; }
+  .v-btn { margin-top:24px; }
+
+  /* NOTES */
+  .notes-section { background:var(--off); padding:72px 0; }
+  details.note { border-top:1px solid var(--border); overflow:hidden; }
+  details.note:last-child { border-bottom:1px solid var(--border); }
+  details.note summary { display:flex; justify-content:space-between; align-items:center; padding:18px 4px; cursor:pointer; list-style:none; user-select:none; }
+  details.note summary::-webkit-details-marker { display:none; }
+  .note-title { font-size:0.8rem; letter-spacing:0.12em; color:var(--text); }
+  .note-plus { font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--taupe); transition:transform 0.25s; flex-shrink:0; margin-left:12px; }
+  details.note[open] .note-plus { transform:rotate(45deg); }
+  .note-body { font-size:0.73rem; line-height:1.95; color:var(--muted); padding:0 4px 20px; }
+
+  /* CTA BANNER */
+  .cta-banner { background:var(--dark); padding:72px 28px; text-align:center; }
+  .cta-ital { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:1.65rem; color:var(--taupe); margin-bottom:10px; letter-spacing:0.04em; line-height:1.7; }
+  .cta-sub { font-size:0.71rem; letter-spacing:0.17em; color:rgba(255,255,255,0.38); margin-bottom:36px; line-height:2; }
+  .cta-btns { display:flex; flex-direction:column; align-items:center; gap:12px; max-width:320px; margin:0 auto; }
+  .cta-btns .btn-round { width:100%; }
+  .cta-btns .btn-outline-light { width:100%; }
+
+  /* FLOAT BTN */
+  .float-btn {
+    position:fixed; bottom:22px; right:20px; width:66px; height:66px;
+    background:var(--btn); border-radius:50%;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-decoration:none; z-index:200; box-shadow:0 4px 24px rgba(0,0,0,0.15); transition:background 0.25s;
+  }
+  .float-btn:hover { background:var(--accent); }
+  .float-icon { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.25rem; color:#fff; line-height:1; }
+  .float-label { font-size:0.44rem; letter-spacing:0.04em; color:rgba(255,255,255,0.8); margin-top:2px; }
+
+  @media (max-width:380px) {
+    .stats-bar { grid-template-columns:repeat(2,1fr); }
+    .stat:nth-child(2) { border-right:none; }
+    .stat:nth-child(3), .stat:nth-child(4) { border-top:1px solid rgba(255,255,255,0.07); }
+    .stat:nth-child(4) { border-right:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <h1 class="page-header-title">A c a d e m y</h1>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-photo">Photo</div>
+  <div class="hero-overlay">
+    <p class="hero-kicker">Pilates Teacher Training Program</p>
+    <p class="hero-course">Organic Movement Foundation</p>
+    <p class="hero-sub">ピラティス指導者資格養成コース</p>
+    <p class="hero-copy">
+      資格を持ちながらも「なんとなくこなすだけ」の<br>
+      レッスンから卒業したい方へ。
+    </p>
+    <a href="#apply" class="btn-round">申し込みはこちら</a>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">Modules<br>全6モジュール</div></div>
+  <div class="stat"><div class="stat-num">9</div><div class="stat-label">Months<br>約9ヶ月間</div></div>
+  <div class="stat"><div class="stat-num">220</div><div class="stat-label">Exercises<br>約220種</div></div>
+  <div class="stat"><div class="stat-num">12</div><div class="stat-label">Capacity<br>少人数制</div></div>
+</div>
+
+<!-- CONCEPT -->
+<section class="concept-section fade-up">
+  <div class="container">
+    <div class="sec-heading">
+      <span class="sec-heading-en">Concept</span>
+      <span class="sec-heading-ja">コースのコンセプト</span>
+      <div class="sec-rule"></div>
+    </div>
+
+    <p class="concept-lead">
+      高橋なぎ × 海野千和、総フォロワー3万人を超える2人が監修するピラティス養成コースです。<br><br>
+      高橋なぎの膨大なピラティスの知識や経験と海野千和（医療系国家資格所有）の機能解剖学に基づく重力適応や身体操作を元に、単にエクササイズの振付を学ぶだけではなく、
+    </p>
+
+    <div class="concept-box">
+      <p class="concept-box-title">このコースで学ぶこと</p>
+      <ul>
+        <li>エクササイズの動きの意味</li>
+        <li>クライアントのアライメントと動きとの関係</li>
+        <li>実際の人の動きの見方やエクササイズの組み立て方</li>
+      </ul>
+    </div>
+
+    <p class="concept-lead">
+      など多くの現場で培われてきた指導ノウハウをもとに本質的な指導力を身につけるためのコースです。
+    </p>
+
+    <p class="concept-quote">
+      「有機的な動き（Organic Movement）」――<br>
+      体全体が一つの生命体として機能する状態を取り戻す。
+    </p>
+
+    <p class="concept-sub">
+      「有機的」をピラティスの文脈であれば「体の各部位が独立してではなく、相互に関係しながら全体として機能している状態」と捉えています。<br><br>
+      そんな体の状態にしていくためには重力の適応・力の伝達・体の繋がり・「身体を操作する」という感覚が重要であり、その辺を分かって動けるようになると「動きに質感」が生まれてきます。<br><br>
+      こういったポイントを大事にすることで、結果的に体の不調や姿勢の改善、スタイルアップやパフォーマンスアップを目指せるようになっていきます。
+    </p>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- FOR WHOM -->
+<section class="whom-section fade-up">
+  <div class="container">
+    <div class="sec-heading">
+      <span class="sec-heading-en">For Whom</span>
+      <span class="sec-heading-ja">こんな方におすすめ</span>
+      <div class="sec-rule"></div>
+    </div>
+
+    <p class="whom-lead">
+      資格を持ちながらも<em>「レッスンが楽しくない」</em><br>
+      「効果を実感させられない」「不安のままこなしている」<br>
+      ――そんな現役インストラクターが、<br>
+      自信を持って指導できるプロフェッショナルへと<br>
+      変容することを本コースは全力でサポートします。
+    </p>
+
+    <div class="whom-tags">
+      <div class="whom-tag">エクササイズのやり方やキューイングをただ覚えるだけでは不安を感じている方</div>
+      <div class="whom-tag">お客さまのご希望に合わせて体を変化させていくイメージが湧き、1本1本のレッスンを楽しめるようになりたい方</div>
+      <div class="whom-tag">エクササイズの動きの意味や、筋肉が硬い・柔らかい・強い・弱いだけでは説明のつかない動きの苦手の背景・アライメントとの関係を学びたい方</div>
+      <div class="whom-tag">既にピラティスインストラクターの方でも受講可能です</div>
+    </div>
+
+    <p class="whom-resolution">
+      Organic Movement Foundationは、<br>
+      <strong>あなたの指導に「確信」と「喜び」を取り戻す</strong>ための場所です。
+    </p>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- BENEFITS -->
+<section class="benefits-section fade-up">
+  <div class="container">
+    <div class="sec-heading">
+      <span class="sec-heading-en">Benefits</span>
+      <span class="sec-heading-ja">受講のメリット</span>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="benefit-list">
+      <div class="benefit-item">
+        <div class="benefit-num">01</div>
+        <div>
+          <p class="benefit-title">「なぜ動くか」が分かり、指導への確信が生まれる</p>
+          <p class="benefit-desc">機能解剖学を軸に「骨で体を見る」技術（骨格ボディマップ）を習得。エクササイズの意図を深く理解することで、その場しのぎのキューイングから脱却できます。</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-num">02</div>
+        <div>
+          <p class="benefit-title">約220種のエクササイズを体系的にマスター</p>
+          <p class="benefit-desc">マット・リフォーマー・キャデラック・チェア・ラダーバレルなど主要器具を網羅。豊富なバリエーションを指導の引き出しとして持てるようになります。</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-num">03</div>
+        <div>
+          <p class="benefit-title">クライアントの変化を引き出せる指導力の獲得</p>
+          <p class="benefit-desc">アライメントと動きの関係、姿勢修正要素を習得。「なんとなく良くなった」ではなく、原因から改善するアプローチができるようになります。</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-num">04</div>
+        <div>
+          <p class="benefit-title">実戦形式のセッションコーチングで即戦力へ</p>
+          <p class="benefit-desc">最終モジュールでは実際のセッション形式でのコーチングを実施。学びを現場に直結させる実践力を養います。</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-num">05</div>
+        <div>
+          <p class="benefit-title">少人数制（定員12名）だからこそ深まる学び</p>
+          <p class="benefit-desc">個々の課題に丁寧に向き合える環境。監修者・講師からのフィードバックをダイレクトに受けられます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- CURRICULUM -->
+<section class="curriculum-section fade-up">
+  <div class="container">
+    <div class="sec-heading">
+      <span class="sec-heading-en">Curriculum</span>
+      <span class="sec-heading-ja">カリキュラム 全6モジュール</span>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="curriculum-track">
+      <div class="c-item">
+        <div class="c-dot-col"><div class="c-dot"></div></div>
+        <div class="c-content">
+          <span class="c-tag">Module 1 ／ 2日間</span>
+          <p class="c-title">骨格ボディマップ・脊柱リリース</p>
+          <p class="c-desc">担当：海野千和<br>骨で体を見る技術（骨格ボディマップ）の基礎。脊柱の構造理解とリリーステクニック。機能解剖学の導入。</p>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-dot-col"><div class="c-dot"></div></div>
+        <div class="c-content">
+          <span class="c-tag">Module 2 ／ 3日間</span>
+          <p class="c-title">脊柱・胸郭・肩甲骨・上肢の繋がり</p>
+          <p class="c-desc">担当：マスター講師<br>体幹上部の連動性。胸郭の可動性と肩甲骨の安定・可動の関係。上肢エクササイズへの応用。</p>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-dot-col"><div class="c-dot"></div></div>
+        <div class="c-content">
+          <span class="c-tag">Module 3 ／ 3日間</span>
+          <p class="c-title">腰椎・骨盤帯・下肢の繋がり</p>
+          <p class="c-desc">担当：マスター講師<br>体幹下部と下肢の連動。骨盤帯のニュートラルと腰椎安定。下肢エクササイズとの統合。</p>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-dot-col"><div class="c-dot"></div></div>
+        <div class="c-content">
+          <span class="c-tag">Module 4 ／ 4日間</span>
+          <p class="c-title">全身統合・側弯抑制エクササイズ</p>
+          <p class="c-desc">担当：マスター講師<br>上下肢・体幹を統合した全身アプローチ。側弯に対するアセスメントと抑制エクササイズの実践。</p>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-dot-col"><div class="c-dot"></div></div>
+        <div class="c-content">
+          <span class="c-tag">Module 5 ／ 3日間</span>
+          <p class="c-title">直立二足歩行への準備・姿勢修正要素</p>
+          <p class="c-desc">担当：マスター講師<br>重力適応と二足歩行のメカニズム。姿勢評価・修正のアプローチ。アライメントと動きの関係の実践的指導法。</p>
+        </div>
+      </div>
+      <div class="c-item final">
+        <div class="c-dot-col"><div class="c-dot"></div></div>
+        <div class="c-content">
+          <span class="c-tag">Module 6 ／ 3日間</span>
+          <p class="c-title">立位・セッションコーチング（実戦形式）＋ 修了試験</p>
+          <p class="c-desc">担当：高橋なぎ・海野千和<br>立位エクササイズの統合。実際のセッションを模した実戦形式コーチング。試験（筆記・ムーヴメント・ティーチング）合格で認定証発行。</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="curriculum-note">
+      ※1期目の養成コースのためあくまで予定です。多少の変更の可能性をご了承ください。<br>
+      ※各モジュールの日程詳細は別途ご案内いたします。
+    </p>
+  </div>
+</section>
+
+<!-- PDF CTA -->
+<div class="pdf-wrap fade-up">
+  <div class="pdf-section">
+    <p class="pdf-eyebrow">Document</p>
+    <h2 class="pdf-title">コース概要説明書（PDF）を読む</h2>
+    <p class="pdf-body">
+      カリキュラムの詳細・修了試験・注意事項など、<br>
+      コースの全容をまとめた資料をご用意しています。<br>
+      お申し込み前にぜひご一読ください。
+    </p>
+    <a href="#" class="btn-pdf">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 16l-4-4h3V4h2v8h3l-4 4z"/>
+        <path d="M4 20h16"/>
+      </svg>
+      概要説明書をダウンロード（PDF）
+    </a>
+  </div>
+</div>
+
+<!-- SCHEDULE & PRICE -->
+<section class="schedule-section fade-up" id="apply">
+  <div class="container">
+    <div class="sec-heading">
+      <span class="sec-heading-en">Schedule & Price</span>
+      <span class="sec-heading-ja">開催日程・料金</span>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="venue-tabs">
+      <div class="v-tab active" onclick="switchTab('osaka',this)">Osaka</div>
+      <div class="v-tab" onclick="switchTab('tokyo',this)">Tokyo</div>
+    </div>
+
+    <!-- OSAKA -->
+    <div class="v-panel active" id="panel-osaka">
+      <div class="v-card">
+        <p class="v-meta">
+          定員 12名 ／ 火・水曜日開催 ／ 1日6時間前後（休憩1時間）<br>
+          会場：Soé Pilates Studio<br>
+          長堀鶴見緑地線 西大橋駅 徒歩約5分<br>
+          大阪メトロ 中央線 本町駅 徒歩約10分
+        </p>
+        <p class="sch-label">Schedule 2025–2026</p>
+        <div class="sch-row"><span class="sch-mod">Module 1（2日間）</span><span class="sch-date">8/25・26</span></div>
+        <div class="sch-row"><span class="sch-mod">Module 2（3日間）</span><span class="sch-date">9/15・16、10/13</span></div>
+        <div class="sch-row"><span class="sch-mod">Module 3（3日間）</span><span class="sch-date">10/14、11/10・11</span></div>
+        <div class="sch-row"><span class="sch-mod">Module 4（4日間）</span><span class="sch-date">12/8・9、1/12・13</span></div>
+        <div class="sch-row"><span class="sch-mod">Module 5（3日間）</span><span class="sch-date">2/9・10、3/16</span></div>
+        <div class="sch-row"><span class="sch-mod">Module 6（3日間）</span><span class="sch-date">3/17、4/13・14</span></div>
+        <div class="price-wrap">
+          <div class="price-row"><span class="p-lbl">Module 1〜3のみ</span><span class="p-val">¥554,400</span></div>
+          <div class="price-row"><span class="p-lbl">全Module一括（10% OFF）</span><span class="p-val sale"><span class="p-strike">¥1,232,000</span>¥1,120,000</span></div>
+          <div class="price-row"><span class="p-lbl">全Module＋オンライン受講済</span><span class="p-val sale">¥1,020,000</span></div>
+        </div>
+        <p class="price-note">
+          ※分割払い可能（12回までは手数料無料。18回・24回は約10%の手数料がかかります）<br>
+          ※コース途中のキャンセルによるご返金は不可とさせていただきます
+        </p>
+        <div class="v-btn"><a href="#" class="btn-round">大阪　申し込みはこちら</a></div>
+      </div>
+    </div>
+
+    <!-- TOKYO -->
+    <div class="v-panel" id="panel-tokyo">
+      <div class="v-card">
+        <p class="v-meta">
+          定員 8名 ／ 日・月曜日開催 ／ 1日6時間前後（休憩1時間）<br>
+          会場：the SOHO TOKYO BAY NEW WORK STYLE 602号室<br>
+          東京都江東区青海2丁目7-4<br>
+          東京国際クルーズターミナル駅 徒歩5分
+        </p>
+        <p class="sch-label">Schedule 2025–2026</p>
+        <div class="sch-row"><span class="sch-mod">Module 1（2日間）</span><span class="sch-date">8/16・17</span></div>
+        <div class="sch-row"><span class="sch-mod">Module 2（3日間）</span><span class="sch-date">9/27・28、10/18</span></div>
+        <div class="sch-row"><span class="sch-mod">Module 3（3日間）</span><span class="sch-date">10/19、11/15・16</span></div>
+        <div class="sch-row"><span class="sch-mod">Module 4（4日間）</span><span class="sch-date">12/6・7、1/17・18</span></div>
+        <div class="sch-row"><span class="sch-mod">Module 5（3日間）</span><span class="sch-date">2/14・15、3/7</span></div>
+        <div class="sch-row"><span class="sch-mod">Module 6（3日間）</span><span class="sch-date">3/8、4/18・19</span></div>
+        <div class="price-wrap">
+          <div class="price-row"><span class="p-lbl">Module 1〜3のみ</span><span class="p-val">¥554,400</span></div>
+          <div class="price-row"><span class="p-lbl">全Module一括（10% OFF）</span><span class="p-val sale"><span class="p-strike">¥1,232,000</span>¥1,120,000</span></div>
+          <div class="price-row"><span class="p-lbl">全Module＋オンライン受講済</span><span class="p-val sale">¥1,020,000</span></div>
+        </div>
+        <p class="price-note">
+          ※分割払い可能（12回までは手数料無料。18回・24回は約10%の手数料がかかります）<br>
+          ※コース途中のキャンセルによるご返金は不可とさせていただきます
+        </p>
+        <div class="v-btn"><a href="#" class="btn-round">東京　申し込みはこちら</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTES -->
+<section class="notes-section fade-up">
+  <div class="container">
+    <div class="sec-heading">
+      <span class="sec-heading-en">Notes</span>
+      <span class="sec-heading-ja">受講にあたっての注意事項</span>
+      <div class="sec-rule"></div>
+    </div>
+
+    <details class="note">
+      <summary><span class="note-title">受講資格について</span><span class="note-plus">+</span></summary>
+      <p class="note-body">ピラティスのレッスンをグループやパーソナルを含め最低20回以上の受講経験があること。※状況に応じてご相談可能。既にピラティスインストラクターの方でも受講可能です。</p>
+    </details>
+
+    <details class="note">
+      <summary><span class="note-title">事前オンライン講座について</span><span class="note-plus">+</span></summary>
+      <p class="note-body">海野千和のオンライン講座を並行して受講いただきます。機能解剖学と重力適応を元にOMFに必要な基礎知識を全12回でお話しています。コース開始までにまずはある程度視聴しておくことでより対面のコースの理解度が高まります。すでに受講されている方は免除となりますが、アーカイブは常時ご覧いただけます。</p>
+    </details>
+
+    <details class="note">
+      <summary><span class="note-title">修了試験・認定証について</span><span class="note-plus">+</span></summary>
+      <p class="note-body">module4〜6の受講、試験の合格までなければ認定証や修了証の発行は致しかねますのでご了承ください。試験は筆記・ムーヴメント・ティーチングの3形式で実施します。各試験の評価基準・合格基準の詳細は、受講開始後にご案内します。</p>
+    </details>
+
+    <details class="note">
+      <summary><span class="note-title">分割払いについて</span><span class="note-plus">+</span></summary>
+      <p class="note-body">12回までの分割については手数料無料です。18回、24回については約10％の手数料がかかりますのでご注意ください。決済完了後は支払い方法・分割回数の変更はできません。お支払いを途中で辞めることはできません。また、すべての支払いが完了するまでMOSHの退会もできません。</p>
+    </details>
+
+    <details class="note">
+      <summary><span class="note-title">途中キャンセル・ご返金について</span><span class="note-plus">+</span></summary>
+      <p class="note-body">申し訳ありませんがコース途中のキャンセルによるご返金は不可とさせて頂きます。お申し込みの前に十分ご検討のうえ、ご不明な点はMOSHのメッセージよりお問い合わせください。</p>
+    </details>
+
+    <details class="note">
+      <summary><span class="note-title">定員・お申し込みについて</span><span class="note-plus">+</span></summary>
+      <p class="note-body">大阪：定員12名 ／ 東京：定員8名の少人数制コースです。定員に達し次第、募集を締め切ります。お早めにお申し込みください。予約完了後、MOSH上からもお問い合わせ可能です。</p>
+    </details>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner fade-up">
+  <p class="cta-ital">
+    資格を持ちながらも<br>
+    「なんとなくこなすだけ」の<br>
+    レッスンから卒業したい方へ。
+  </p>
+  <p class="cta-sub">
+    まずはお気軽にお問い合わせ・説明会へお越しください。<br>
+    定員12名 ／ 先着順受付中
+  </p>
+  <div class="cta-btns">
+    <a href="#" class="btn-round">大阪　申し込みはこちら</a>
+    <a href="#" class="btn-round">東京　申し込みはこちら</a>
+    <a href="#" class="btn-outline-light">お問い合わせ</a>
+  </div>
+</div>
+
+<!-- FLOAT BTN -->
+<a href="#apply" class="float-btn">
+  <span class="float-icon">𝒮</span>
+  <span class="float-label">申し込む</span>
+</a>
+
+<script>
+  function switchTab(city, el) {
+    document.querySelectorAll('.v-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.v-panel').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('panel-' + city).classList.add('active');
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
