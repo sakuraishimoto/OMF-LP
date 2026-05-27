@@ -16,7 +16,7 @@
     --accent: #8c7b6b;
     --btn:    #c4b5a5;
     --dark:   #2b2520;
-    --muted:  #9a9189;
+    --muted:  #7a7068;
     --text:   #2e2a26;
   }
   *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -61,7 +61,7 @@
   .stat { padding:22px 8px; text-align:center; border-right:1px solid rgba(255,255,255,0.07); }
   .stat:last-child { border-right:none; }
   .stat-num { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:1.9rem; color:var(--taupe); line-height:1; margin-bottom:4px; }
-  .stat-label { font-size:0.53rem; letter-spacing:0.1em; color:rgba(255,255,255,0.4); line-height:1.7; }
+  .stat-label { font-size:0.62rem; letter-spacing:0.1em; color:rgba(255,255,255,0.65); line-height:1.7; }
 
   /* CONCEPT */
   .concept-section { padding:72px 0; background:var(--white); }
@@ -233,7 +233,7 @@
     .stat:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.07); }
     .stat:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.07); border-right: none; }
     .stat-num { font-size: 1.6rem; }
-    .stat-label { font-size: 0.5rem; }
+    .stat-label { font-size: 0.58rem; }
 
     /* SECTIONS */
     .container { padding: 0 20px; }
@@ -272,7 +272,7 @@
     .benefit-desc { font-size: 0.7rem; }
 
     /* CURRICULUM TABLE → stacked cards on mobile */
-    .c-table { display: none; }
+    .c-table { display: flex; }
     .curriculum-cards { display: flex; flex-direction: column; gap: 2px; }
     .curriculum-card {
       background: var(--white);
@@ -310,7 +310,7 @@
     .instruments-label { font-size: 0.58rem; }
     .instrument-tag { font-size: 0.66rem; padding: 3px 10px; }
   
-  .curriculum-cards { display: none; }
+  .curriculum-cards { display: flex; }
   .c-note { font-size: 0.68rem; }
 
     /* ASSESSMENT */
